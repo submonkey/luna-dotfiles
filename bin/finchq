@@ -1,0 +1,16 @@
+#!/bin/bash
+
+wid=$(xdotool search --classname finchq)
+if [ -z "$wid" ]; then
+    urxvtcd -name finchq -geometry 80x32 -e finch
+    wid=$(xdotool search --classname finchq | head -1)
+    xdotool windowfocus $wid
+    xdotool key Control_L+1
+else
+    if [ -z "$(xdotool search --onlyvisible --classname finchq 2>/dev/null)" ]; then
+        xdotool windowmap $wid
+        xdotool windowfocus $wid
+    else
+        xdotool windowunmap $wid
+    fi
+fi

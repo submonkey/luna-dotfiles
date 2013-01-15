@@ -1,0 +1,16 @@
+#!/bin/bash
+
+wid=$(xdotool search --classname ncmpcq)
+if [ -z "$wid" ]; then
+    urxvtcd -name ncmpcq -geometry 80x32 -e ncmpcpp
+    wid=$(xdotool search --classname ncmpcq | head -1)
+    xdotool windowfocus $wid
+    xdotool key Control_L+1
+else
+    if [ -z "$(xdotool search --onlyvisible --classname ncmpcq 2>/dev/null)" ]; then
+        xdotool windowmap $wid
+        xdotool windowfocus $wid
+    else
+        xdotool windowunmap $wid
+    fi
+fi

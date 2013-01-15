@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# exe=`dmenu_path | yeganesh ` && eval \"exec $exe\"
+
+#dmenu= "$(dmenu_run | yeganesh -- -nb '#515151' -nf '#1793D1' -sb '#0066ff')"
+dmenu_run_recent -nb '#333333' -nf '#0088CC' -sb '#0066ff'
